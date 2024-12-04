@@ -10,6 +10,8 @@ import Errorpage from "./pages/Errorpage.jsx";
 import AddProducts from "./pages/AddProducts.jsx";
 import AuthContext from "./context/AuthContext.jsx";
 import Profile from "./pages/Profile.jsx";
+import AllEquipment from "./pages/AllEquipment.jsx";
+import Details from "./pages/Details.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -36,6 +38,16 @@ const routes = createBrowserRouter([
       {
         path : "/profile",
         element: <Profile></Profile>
+      },
+      {
+        path: "/all-equipment",
+        element: <AllEquipment></AllEquipment>,
+        loader: ()=> fetch('http://localhost:5000/allSports')
+      },
+      {
+        path: '/details/:id',
+        element: <Details></Details>,
+        loader: ({params})=> fetch(`http://localhost:5000/sports/${params.id}`)
       }
     ],
   },

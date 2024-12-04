@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { UserContext } from "../context/AuthContext";
+
 const AddProducts = () => {
+  const { user } = useContext(UserContext);
+  const userName = user.displayName;
+  const userEmail = user.email;
   const handleAddProduct = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -12,6 +18,8 @@ const AddProducts = () => {
     const stockStatus = form.stock.value;
     const description = form.description.value;
     const equipment = {
+      userName,
+      userEmail,
       itemName,
       category,
       price,
@@ -23,6 +31,17 @@ const AddProducts = () => {
       description,
     };
     console.log(equipment);
+    fetch('http://localhost:5000/sports',{
+        method: 'POST',
+        headers:{
+         'content-type' : 'application/json'   
+        },
+        body: JSON.stringify(equipment)
+    })
+    .then((res) => res.json())
+    .then(data =>{
+        console.log(data)
+    })
     e.target.reset();
   };
   return (
@@ -102,7 +121,7 @@ const AddProducts = () => {
                   <span className="label-text">Processing Time*</span>
                 </div>
                 <input
-                  type="date"
+                  type="text"
                   name="ProcessingTime"
                   placeholder="Delivery time"
                   className="input input-bordered w-full"
