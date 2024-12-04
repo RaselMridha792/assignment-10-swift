@@ -7,6 +7,7 @@ import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import Errorpage from './pages/Errorpage.jsx'
+import AddProducts from './pages/AddProducts.jsx'
 
 const routes = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const routes = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path:'/add-equipment',
+        element: <AddProducts></AddProducts>
       }
     ]
   }
