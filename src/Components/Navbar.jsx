@@ -1,6 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { useContext } from "react";
+import { UserContext } from "../context/AuthContext";
+import { BiLogIn, BiLogOut } from "react-icons/bi";
+import { signOut } from "firebase/auth";
+import auth from "../firebase/firebase.init";
+import { Tooltip } from "react-tooltip";
+
 const Navbar = () => {
+  const { user } = useContext(UserContext);
   const links = (
     <>
       <div className="flex flex-col lg:flex-row gap-5">
@@ -19,6 +27,16 @@ const Navbar = () => {
       </div>
     </>
   );
+
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        alert("sign out successfull");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   return (
     <div>
       <div className="md:flex justify-between items-center py-5 w-10/12 mx-auto">
@@ -73,9 +91,34 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1">{links}</ul>
           </div>
           <div className="navbar-end">
-            <Link to="/login" className="btn">
-              Login
-            </Link>
+            {user ? (
+              <>
+                <div className="avatar mr-2">
+                  <div className="w-12 rounded-full">
+                    <Link to="/profile" id="not-clickable">
+                      <img src={user.photoURL} />
+                    </Link>
+                    <Tooltip anchorSelect="#not-clickable">
+                      <p>{user.displayName}</p>
+                    </Tooltip>
+                  </div>
+                </div>
+                <Link
+                  onClick={handleSignOut}
+                  to="/login"
+                  className="flex items-center gap-1 font-Roboto text-xl"
+                >
+                  <BiLogOut /> Logout
+                </Link>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="flex items-center gap-1 font-Roboto text-xl"
+              >
+                <BiLogIn /> Login
+              </Link>
+            )}
           </div>
         </div>
       </div>

@@ -1,15 +1,42 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/AuthContext";
+import { FaGoogle } from "react-icons/fa";
 
 const Register = () => {
+  const { handleRegisterUser, handleSignInGoogle, handleUpdateUser } =
+    useContext(UserContext);
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
-    const form = event.target;
+    const form = e.target;
     const name = form.name.value;
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    const user = { email, password, name, photo };
-    console.log(user)
+    handleRegisterUser(email, password)
+      .then((result) => {
+        handleUpdateUser({displayName: name, photoURL: photo})
+        .then(()=>{
+          navigate("/");
+        })
+        .catch(error=>{
+          console.log(error)
+        })
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleSinUpGoogle = () => {
+    handleSignInGoogle()
+      .then((result) => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <>
@@ -65,8 +92,15 @@ const Register = () => {
                 required
               />
             </div>
-            <div className="form-control mt-6">
+            <div className="form-control mt-6 space-y-4">
               <button className="btn btn-primary">Register</button>
+              <button
+                onClick={handleSinUpGoogle}
+                className="btn bg-gray-800 hover:bg-gray-500 text-white"
+              >
+                {" "}
+                <FaGoogle /> Sign up With Google
+              </button>
             </div>
             <p className="text-center">
               have an account?{" "}
