@@ -22,7 +22,7 @@ const Navbar = () => {
           <NavLink to="/add-equipment">Add Equipment</NavLink>
         </li>
         <li>
-          <NavLink to="/my-equipment">My Equipment</NavLink>
+          <NavLink to={`/myEquipments/${user?.email}`}>My Equipment</NavLink>
         </li>
       </div>
     </>

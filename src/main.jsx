@@ -12,6 +12,7 @@ import AuthContext from "./context/AuthContext.jsx";
 import Profile from "./pages/Profile.jsx";
 import AllEquipment from "./pages/AllEquipment.jsx";
 import Details from "./pages/Details.jsx";
+import MyEquipments from "./pages/MyEquipments.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -42,12 +43,17 @@ const routes = createBrowserRouter([
       {
         path: "/all-equipment",
         element: <AllEquipment></AllEquipment>,
-        loader: ()=> fetch('http://localhost:5000/allSports')
+        loader: ()=> fetch('https://a-sports-equipment-store-server.vercel.app/allSports')
       },
       {
         path: '/details/:id',
         element: <Details></Details>,
-        loader: ({params})=> fetch(`http://localhost:5000/sports/${params.id}`)
+        loader: ({params})=> fetch(`https://a-sports-equipment-store-server.vercel.app/sports/${params.id}`)
+      },
+      {
+        path: '/myEquipments/:user',
+        element: <MyEquipments></MyEquipments>,
+        loader: ({params})=> fetch(`http://localhost:5000/myEquipments/${params.user}`)
       }
     ],
   },

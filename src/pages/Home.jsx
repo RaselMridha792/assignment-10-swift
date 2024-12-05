@@ -7,7 +7,7 @@ const Home = () => {
 
   useEffect(() => {
     const loadAllData = async () => {
-      const response = await fetch("http://localhost:5000/sports");
+      const response = await fetch("https://a-sports-equipment-store-server.vercel.app/sports");
       const data = await response.json();
       setCardData(data);
     };
