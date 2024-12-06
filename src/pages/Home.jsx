@@ -13,7 +13,6 @@ const Home = () => {
     };
     loadAllData();
   }, []);
-  console.log(cardData)
   return (
     <>
       <Banner></Banner>

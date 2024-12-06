@@ -1,12 +1,26 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../context/AuthContext";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const AddProducts = () => {
+const UpdateEquipment = () => {
   const { user } = useContext(UserContext);
+  const loadedEquipment = useLoaderData();
+  const {
+    itemName,
+    category,
+    price,
+    rating,
+    customization,
+    ProcessingTime,
+    itemImage,
+    stockStatus,
+    description,
+    _id,
+  } = loadedEquipment;
   const userName = user.displayName;
   const userEmail = user.email;
-  const handleAddProduct = (e) => {
+  const HandleUpdateProduct = (e) => {
     e.preventDefault();
     const form = e.target;
     const itemName = form.ItemName.value;
@@ -18,7 +32,7 @@ const AddProducts = () => {
     const itemImage = form.image.value;
     const stockStatus = form.stock.value;
     const description = form.description.value;
-    const equipment = {
+    const UpdateEquipment = {
       userName,
       userEmail,
       itemName,
@@ -31,32 +45,33 @@ const AddProducts = () => {
       stockStatus,
       description,
     };
-    fetch("https://a-sports-equipment-store-server.vercel.app/sports", {
-      method: "POST",
+    fetch(`https://a-sports-equipment-store-server.vercel.app/sports/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(equipment),
+      body: JSON.stringify(UpdateEquipment),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.acknowledged == true) {
+        if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success",
-            text: "Successfully Added your Equipments",
+            text: "Successfully Updated your Equipments",
             icon: "success",
           });
         }
       });
-    e.target.reset();
   };
   return (
-    <>
+    <div>
       <div className="w-10/12 mx-auto font-Roboto my-20 border shadow-lg rounded-lg">
-        <h1 className="text-center font-bold text-4xl py-5">Add Equipment</h1>
+        <h1 className="text-center font-bold text-4xl py-5">
+          Update Equipment
+        </h1>
         <hr />
         <div className="py-5 md:px-10 px-5">
-          <form onSubmit={handleAddProduct} className="gap-5">
+          <form onSubmit={HandleUpdateProduct} className="gap-5">
             <div className="md:flex gap-5">
               <label className="form-control w-full">
                 <div className="label">
@@ -65,6 +80,7 @@ const AddProducts = () => {
                 <input
                   type="text"
                   name="ItemName"
+                  defaultValue={itemName}
                   placeholder="Item Name"
                   className="input input-bordered w-full "
                   required
@@ -77,6 +93,7 @@ const AddProducts = () => {
                 <input
                   type="text"
                   name="category"
+                  defaultValue={category}
                   placeholder="Item Name"
                   className="input input-bordered w-full"
                   required
@@ -91,6 +108,7 @@ const AddProducts = () => {
                 <input
                   type="number"
                   name="price"
+                  defaultValue={price}
                   placeholder="product price $"
                   className="input input-bordered w-full"
                   required
@@ -103,6 +121,7 @@ const AddProducts = () => {
                 <input
                   type="number"
                   name="rating"
+                  defaultValue={rating}
                   placeholder="rating"
                   className="input input-bordered w-full"
                   required
@@ -117,6 +136,7 @@ const AddProducts = () => {
                 <input
                   type="text"
                   name="customization"
+                  defaultValue={customization}
                   placeholder="bat with extra grip, hit paper etc"
                   className="input input-bordered w-full"
                   required
@@ -129,6 +149,7 @@ const AddProducts = () => {
                 <input
                   type="text"
                   name="ProcessingTime"
+                  defaultValue={ProcessingTime}
                   placeholder="Delivery time"
                   className="input input-bordered w-full"
                   required
@@ -143,6 +164,7 @@ const AddProducts = () => {
                 <input
                   type="text"
                   name="image"
+                  defaultValue={itemImage}
                   placeholder="Item Name"
                   className="input input-bordered w-full"
                   required
@@ -155,6 +177,7 @@ const AddProducts = () => {
                 <input
                   type="number"
                   name="stock"
+                  defaultValue={stockStatus}
                   placeholder="How many stock do you have"
                   className="input input-bordered w-full"
                   required
@@ -168,18 +191,19 @@ const AddProducts = () => {
               <textarea
                 placeholder="write your product description"
                 name="description"
+                defaultValue={description}
                 className="textarea textarea-bordered textarea-lg w-full"
                 required
               ></textarea>
             </label>
             <button className="btn col-span-2 btn-success w-full my-5">
-              Add Product
+              Update Product
             </button>
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default AddProducts;
+export default UpdateEquipment;

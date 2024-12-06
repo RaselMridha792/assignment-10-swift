@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const MyEquipCard = ({ singleData }) => {
+const MyEquipCard = ({ singleData, setData, data }) => {
   const {
     itemName,
     category,
@@ -13,6 +14,37 @@ const MyEquipCard = ({ singleData }) => {
     stockStatus,
     _id,
   } = singleData;
+
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://a-sports-equipment-store-server.vercel.app/sports/${_id}`, {
+            method: 'DELETE'
+        })
+          .then((res) => res.json())
+          .then((datas) => {
+            if (datas.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+
+              const remaining = data.filter(sports => sports._id !== _id)
+              setData(remaining);
+            }
+          });
+      }
+    });
+  };
   return (
     <>
       <div className="card bg-base-100 border rounded-none shadow-xl">
@@ -49,13 +81,15 @@ const MyEquipCard = ({ singleData }) => {
               {stockStatus}
             </p>
           </div>
-          
+
           <div className="*:w-full grid grid-cols-3 gap-5 mt-auto">
-            <button className="btn btn-warning">Edit</button>
+            <Link to={`/updateEquipment/${_id}`} className="btn btn-warning">Edit</Link>
             <Link to={`/details/${_id}`} className="btn btn-success">
-            view details
-          </Link>
-            <button className="btn btn-error">Delete</button>
+              view details
+            </Link>
+            <button onClick={() => handleDelete(_id)} className="btn btn-error">
+              Delete
+            </button>
           </div>
         </div>
       </div>

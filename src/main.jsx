@@ -13,6 +13,7 @@ import Profile from "./pages/Profile.jsx";
 import AllEquipment from "./pages/AllEquipment.jsx";
 import Details from "./pages/Details.jsx";
 import MyEquipments from "./pages/MyEquipments.jsx";
+import UpdateEquipment from "./pages/UpdateEquipment.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -53,7 +54,12 @@ const routes = createBrowserRouter([
       {
         path: '/myEquipments/:user',
         element: <MyEquipments></MyEquipments>,
-        loader: ({params})=> fetch(`http://localhost:5000/myEquipments/${params.user}`)
+        loader: ({params})=> fetch(`https://a-sports-equipment-store-server.vercel.app/myEquipments/${params.user}`)
+      },
+      {
+        path: '/updateEquipment/:id',
+        element: <UpdateEquipment></UpdateEquipment>,
+        loader: ({params})=> fetch(`https://a-sports-equipment-store-server.vercel.app/sports/${params.id}`)
       }
     ],
   },
