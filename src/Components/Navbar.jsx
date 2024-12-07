@@ -6,6 +6,8 @@ import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { signOut } from "firebase/auth";
 import auth from "../firebase/firebase.init";
 import { Tooltip } from "react-tooltip";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
   const { user } = useContext(UserContext);
@@ -31,7 +33,7 @@ const Navbar = () => {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        alert("sign out successfull");
+        toast.success('sign out successfull')
       })
       .catch((error) => {
         console.log(error.message);
@@ -40,6 +42,7 @@ const Navbar = () => {
   return (
     <div>
       <div className="md:flex justify-between items-center py-5 w-10/12 mx-auto">
+      <ToastContainer></ToastContainer>
         <div className="hidden md:flex">
           <p>Push Your Limits, Play with Passion!</p>
         </div>

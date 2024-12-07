@@ -12,18 +12,21 @@ export const UserContext = createContext();
 
 const AuthContext = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loader, setLoader] = useState(true);
   const provider = new GoogleAuthProvider();
+  const [loading, setLoading] = useState(true);
 
   const handleSignInGoogle = () => {
+    setLoading(true)
     return signInWithPopup(auth, provider);
   };
 
   const handleRegisterUser = (email, password) => {
+    setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const handleSignInUser = (email, password) => {
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -32,8 +35,10 @@ const AuthContext = ({ children }) => {
     const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
+        setLoading(false)
       } else {
         setUser(null);
+        setLoading(false)
       }
     });
     return () => {
@@ -41,19 +46,27 @@ const AuthContext = ({ children }) => {
     };
   }, []);
 
-  const handleUpdateUser = (updatedData)=>{
+  const handleUpdateUser = (updatedData) => {
     return updateProfile(auth.currentUser, updatedData);
-  }
+  };
 
+  const [resetmail, setResetMail] = useState("");
+  const handleReset = (email) => {
+    const resetEmail = email.current.value;
+    setResetMail(resetEmail);
+  };
 
   const dataInfo = {
     user,
-    loader,
-    setLoader,
+    setUser,
     handleRegisterUser,
     handleSignInUser,
     handleSignInGoogle,
     handleUpdateUser,
+    handleReset,
+    resetmail,
+    loading,
+    setLoading,
   };
 
   return (

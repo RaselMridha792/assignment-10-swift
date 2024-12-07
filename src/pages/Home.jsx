@@ -4,15 +4,19 @@ import Cards from "../Components/Cards";
 
 const Home = () => {
   const [cardData, setCardData] = useState([]);
+  const [loader, setLoader] = useState(true)
 
   useEffect(() => {
     const loadAllData = async () => {
-      const response = await fetch("https://a-sports-equipment-store-server.vercel.app/sports");
+      const response = await fetch(
+        "https://a-sports-equipment-store-server.vercel.app/sports"
+      );
       const data = await response.json();
       setCardData(data);
+      setLoader(false)
     };
     loadAllData();
-  }, []);
+  }, [loader]);
   return (
     <>
       <Banner></Banner>
@@ -20,7 +24,17 @@ const Home = () => {
         <h1 className="text-7xl font-Bebas text-center">Our New Products</h1>
         <hr />
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mt-20">
-            {cardData.map(singleData => <Cards key={singleData._id} singleData={singleData}></Cards>)}
+          {loader ? (
+            <>
+              <div className="col-span-3 flex items-center justify-center">
+                <span className="loading loading-spinner loading-lg"></span>
+              </div>
+            </>
+          ) : (
+            cardData.map((singleData) => (
+              <Cards key={singleData._id} singleData={singleData}></Cards>
+            ))
+          )}
         </div>
       </div>
     </>

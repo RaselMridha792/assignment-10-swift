@@ -14,6 +14,8 @@ import AllEquipment from "./pages/AllEquipment.jsx";
 import Details from "./pages/Details.jsx";
 import MyEquipments from "./pages/MyEquipments.jsx";
 import UpdateEquipment from "./pages/UpdateEquipment.jsx";
+import ForgetPass from "./pages/ForgetPass.jsx";
+import PrivetRoutes from "./Components/privet routes/PrivetRoutes.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -35,32 +37,66 @@ const routes = createBrowserRouter([
       },
       {
         path: "/add-equipment",
-        element: <AddProducts></AddProducts>,
+        element: (
+          <PrivetRoutes>
+            <AddProducts></AddProducts>
+          </PrivetRoutes>
+        ),
       },
       {
-        path : "/profile",
-        element: <Profile></Profile>
+        path: "/profile",
+        element: (
+          <PrivetRoutes>
+            <Profile></Profile>
+          </PrivetRoutes>
+        ),
       },
       {
         path: "/all-equipment",
         element: <AllEquipment></AllEquipment>,
-        loader: ()=> fetch('https://a-sports-equipment-store-server.vercel.app/allSports')
+        loader: () =>
+          fetch("https://a-sports-equipment-store-server.vercel.app/allSports"),
       },
       {
-        path: '/details/:id',
-        element: <Details></Details>,
-        loader: ({params})=> fetch(`https://a-sports-equipment-store-server.vercel.app/sports/${params.id}`)
+        path: "/details/:id",
+        element: (
+          <PrivetRoutes>
+            <Details></Details>
+          </PrivetRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://a-sports-equipment-store-server.vercel.app/sports/${params.id}`
+          ),
       },
       {
-        path: '/myEquipments/:user',
-        element: <MyEquipments></MyEquipments>,
-        loader: ({params})=> fetch(`https://a-sports-equipment-store-server.vercel.app/myEquipments/${params.user}`)
+        path: "/myEquipments/:user",
+        element: (
+          <PrivetRoutes>
+            <MyEquipments></MyEquipments>
+          </PrivetRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://a-sports-equipment-store-server.vercel.app/myEquipments/${params.user}`
+          ),
       },
       {
-        path: '/updateEquipment/:id',
-        element: <UpdateEquipment></UpdateEquipment>,
-        loader: ({params})=> fetch(`https://a-sports-equipment-store-server.vercel.app/sports/${params.id}`)
-      }
+        path: "/updateEquipment/:id",
+        element: (
+          <PrivetRoutes>
+            <UpdateEquipment></UpdateEquipment>
+          </PrivetRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://a-sports-equipment-store-server.vercel.app/sports/${params.id}`
+          ),
+      },
+      {
+        path: "/forgetPass",
+        element: <ForgetPass></ForgetPass>,
+      },
     ],
   },
 ]);
