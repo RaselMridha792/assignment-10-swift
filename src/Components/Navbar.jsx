@@ -33,7 +33,7 @@ const Navbar = () => {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        toast.success('sign out successfull')
+        console.log('logout successfull')
       })
       .catch((error) => {
         console.log(error.message);

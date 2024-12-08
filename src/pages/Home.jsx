@@ -5,6 +5,7 @@ import CategoryItem from "../Components/CategoryItem";
 import { Helmet } from "react-helmet";
 import { Fade } from "react-awesome-reveal";
 import Welcome from "../Components/Welcome";
+import Discount from "../Components/Discount";
 
 const Home = () => {
   const [cardData, setCardData] = useState([]);
@@ -63,6 +64,7 @@ const Home = () => {
           </div>
         </div>
         <Welcome></Welcome>
+        <Discount></Discount>
       </div>
     </>
   );
