@@ -1,10 +1,11 @@
 # swift: Sports Equipment Online Store  
+# assignment category -- Lotus, EquiSports: (A Sports Equipment Store)
 
 Welcome to **swift**, your one-stop online store for premium sports equipment and accessories. This e-commerce platform allows customers to browse, purchase, and manage their sports accessories needs effortlessly.  
 
 **Live client Site URL**: [EquiSports Live](https://sports-auth-a50fc.web.app/)
 **Live server Site URL**: [EquiSports Live](https://a-sports-equipment-store-server.vercel.app/)
-
+**requirements docs**: [https://docs.google.com/document/d/1zl97jEDUtdadOGwHSV_fP1gShCwCxwk6DDhQbEpcfHY/edit?tab=t.0]
 ---
 
 ## 🚀 Features  
