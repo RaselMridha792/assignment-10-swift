@@ -1,9 +1,9 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 
 const Details = () => {
   const data = useLoaderData();
-  console.log(data);
   const {
     itemName,
     category,
@@ -17,6 +17,9 @@ const Details = () => {
   } = data;
   return (
     <>
+      <Helmet>
+        <title>Details | Swift</title>
+      </Helmet>
       <div className="font-Roboto w-10/12 mx-auto my-20">
         <h1 className="md:text-6xl text-3xl text-center font-Bebas">
           Product Details
@@ -29,7 +32,9 @@ const Details = () => {
             </div>
             <div className="space-y-4 text-lg">
               <h1 className="text-3xl">Name: {itemName}</h1>
-              <p><span className="font-bold">our rating:</span> {rating} stars</p>
+              <p>
+                <span className="font-bold">our rating:</span> {rating} stars
+              </p>
               <div className="flex items-center gap-2">
                 <span className="font-bold">rate us:</span>
                 <div className="rating">

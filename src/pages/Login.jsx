@@ -3,18 +3,19 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/AuthContext";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { handleSignInUser, handleSignInGoogle, handleReset, setUser } =
     useContext(UserContext);
-  const emailRef =useRef()
+  const emailRef = useRef();
   const navigate = useNavigate();
   const [eye, setEye] = useState(true);
   const location = useLocation();
-  const handleEye = () =>{
-    setEye(!eye) 
-  }
+  const handleEye = () => {
+    setEye(!eye);
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -24,40 +25,42 @@ const Login = () => {
     handleSignInUser(email, password)
       .then((result) => {
         setUser(result.user);
-        toast.success('successfully logged In')
-        navigate(location?.state?location.state :"/");
+        toast.success("successfully logged In");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error);
-        toast.error(error.message)
+        toast.error(error.message);
       });
   };
 
   const signInwithGoogle = () => {
     handleSignInGoogle()
       .then((result) => {
-        navigate('/')
-        toast.success('successfully logged In');
-        navigate(location?.state?location.state :"/");
+        navigate("/");
+        toast.success("successfully logged In");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error);
-        toast.error(error.message)
+        toast.error(error.message);
       });
   };
 
-
-  const handleResetPassword = (e)=>{
-    e.preventDefault()
-    if(emailRef){
-      handleReset(emailRef)
-      navigate('/forgetPass');
-    }else{
-      toast.error('please enter email to reset password')
+  const handleResetPassword = (e) => {
+    e.preventDefault();
+    if (emailRef) {
+      handleReset(emailRef);
+      navigate("/forgetPass");
+    } else {
+      toast.error("please enter email to reset password");
     }
-  }
+  };
   return (
     <>
+      <Helmet>
+        <title>Login | Swift</title>
+      </Helmet>
       <div className="hero bg-base-200 min-h-screen">
         <ToastContainer></ToastContainer>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -81,17 +84,20 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type={eye?'password':'text'}
+                type={eye ? "password" : "text"}
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
                 required
               />
               <div onClick={handleEye} className="absolute right-4 bottom-12">
-                {eye?<FaEye />:<FaEyeSlash />}
+                {eye ? <FaEye /> : <FaEyeSlash />}
               </div>
               <label className="label">
-                <Link onClick={handleResetPassword} className="label-text-alt link link-hover">
+                <Link
+                  onClick={handleResetPassword}
+                  className="label-text-alt link link-hover"
+                >
                   Forgot password?
                 </Link>
               </label>

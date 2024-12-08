@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import MyEquipCard from "../Components/MyEquipCard";
+import { Helmet } from "react-helmet";
 
 const MyEquipments = () => {
   const loadedData = useLoaderData();
   const [data, setData] = useState(loadedData);
   return (
     <>
+        <Helmet>
+      <title>My equipments | Swift</title>
+    </Helmet>
       <div className="w-10/12 mx-auto my-20">
         <h1 className="text-6xl font-Bebas text-center mb-5">
           {" "}

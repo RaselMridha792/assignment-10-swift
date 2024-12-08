@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../context/AuthContext";
 import { sendPasswordResetEmail } from "firebase/auth";
 import auth from "../firebase/firebase.init";
+import { Helmet } from "react-helmet";
 const ForgetPass = () => {
   const { resetmail } = useContext(UserContext);
   const [email, setEmail] = useState(resetmail || "");
@@ -17,6 +18,9 @@ const ForgetPass = () => {
   };
   return (
     <>
+        <Helmet>
+      <title>Password reset | Swift</title>
+    </Helmet>
       <div className="card font-Roboto bg-base-100 max-w-md mx-auto my-20 shrink-0 shadow-2xl">
         <form onSubmit={handleSendEmail} className="card-body">
           <h1 className="text-2xl font-bold text-center">

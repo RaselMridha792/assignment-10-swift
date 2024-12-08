@@ -1,11 +1,15 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Tabledata from "../Components/Tabledata";
+import { Helmet } from "react-helmet";
 
 const AllEquipment = () => {
   const sports = useLoaderData();
   return (
     <>
+        <Helmet>
+      <title>All Equipments | Swift</title>
+    </Helmet>
       <div>
         <h1 className="md:text-6xl font-3xl font-Bebas text-center py-10">
           All Sports Equipments

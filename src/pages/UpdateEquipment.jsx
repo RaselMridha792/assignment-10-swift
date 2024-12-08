@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../context/AuthContext";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const UpdateEquipment = () => {
   const { user } = useContext(UserContext);
@@ -65,6 +66,9 @@ const UpdateEquipment = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Update | Swift</title>
+      </Helmet>
       <div className="w-10/12 mx-auto font-Roboto my-20 border shadow-lg rounded-lg">
         <h1 className="text-center font-bold text-4xl py-5">
           Update Equipment
@@ -181,6 +185,30 @@ const UpdateEquipment = () => {
                   placeholder="How many stock do you have"
                   className="input input-bordered w-full"
                   required
+                />
+              </label>
+            </div>
+            <div className="md:flex gap-5">
+              <label className="form-control w-full">
+                <div className="label">
+                  <span className="label-text">User Name</span>
+                </div>
+                <input
+                  type="text"
+                  value={userName}
+                  placeholder="Item Name"
+                  className="input text-gray-400 input-bordered w-full"
+                />
+              </label>
+              <label className="form-control w-full">
+                <div className="label">
+                  <span className="label-text">User Email</span>
+                </div>
+                <input
+                  type="text"
+                  value={userEmail}
+                  placeholder="How many stock do you have"
+                  className="input text-gray-400 input-bordered w-full"
                 />
               </label>
             </div>

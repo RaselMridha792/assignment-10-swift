@@ -16,6 +16,7 @@ import MyEquipments from "./pages/MyEquipments.jsx";
 import UpdateEquipment from "./pages/UpdateEquipment.jsx";
 import ForgetPass from "./pages/ForgetPass.jsx";
 import PrivetRoutes from "./Components/privet routes/PrivetRoutes.jsx";
+import ShopNow from "./pages/ShopNow.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -96,6 +97,12 @@ const routes = createBrowserRouter([
       {
         path: "/forgetPass",
         element: <ForgetPass></ForgetPass>,
+      },
+      {
+        path: "/shopnow/:id",
+        element: <ShopNow></ShopNow>,
+        loader: ({ params }) =>
+          fetch(`https://a-sports-equipment-store-server.vercel.app/shopNow/${params.id}`),
       },
     ],
   },

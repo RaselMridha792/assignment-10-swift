@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/AuthContext";
 import slider2 from "../assets/slider2.jpg";
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
   const { user, handleUpdateUser } = useContext(UserContext);
@@ -20,6 +21,9 @@ const Profile = () => {
   };
   return (
     <>
+        <Helmet>
+      <title>Profile | Swift</title>
+    </Helmet>
       <div
         className="hero"
         style={{

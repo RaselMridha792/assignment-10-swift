@@ -5,6 +5,7 @@ import { FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { handleRegisterUser, handleSignInGoogle, handleUpdateUser } =
@@ -63,6 +64,9 @@ const Register = () => {
   };
   return (
     <>
+        <Helmet>
+      <title>register | Swift</title>
+    </Helmet>
       <div className="hero bg-base-200 min-h-screen">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <ToastContainer></ToastContainer>

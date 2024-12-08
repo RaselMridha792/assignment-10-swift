@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AddProducts = () => {
   const { user } = useContext(UserContext);
@@ -52,6 +53,9 @@ const AddProducts = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>Add Product | Swift</title>
+      </Helmet>
       <div className="w-10/12 mx-auto font-Roboto my-20 border shadow-lg rounded-lg">
         <h1 className="text-center font-bold text-4xl py-5">Add Equipment</h1>
         <hr />
@@ -158,6 +162,28 @@ const AddProducts = () => {
                   placeholder="How many stock do you have"
                   className="input input-bordered w-full"
                   required
+                />
+              </label>
+            </div>
+            <div className="md:flex gap-5">
+              <label className="form-control w-full">
+                <div className="label">
+                  <span className="label-text">User Name-- read Only</span>
+                </div>
+                <input
+                  type="text"
+                  value={userName}
+                  className="input text-gray-400 input-bordered w-full"
+                />
+              </label>
+              <label className="form-control w-full">
+                <div className="label">
+                  <span className="label-text">User Email-- read only</span>
+                </div>
+                <input
+                  type="text"
+                  value={userEmail}
+                  className="input text-gray-400 input-bordered w-full"
                 />
               </label>
             </div>

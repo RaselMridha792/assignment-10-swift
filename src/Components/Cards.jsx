@@ -51,7 +51,7 @@ const Cards = ({ singleData }) => {
               {stockStatus}
             </p>
           </div>
-            <Link to={`/details/${_id}`} className="btn btn-warning mt-auto">view details</Link>
+            <Link to={`/details/${_id}`} className="btn bg-gray-700 text-white mt-auto">view details</Link>
         </div>
       </div>
     </>
