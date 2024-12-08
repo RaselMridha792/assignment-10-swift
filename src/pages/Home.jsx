@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 import { Fade } from "react-awesome-reveal";
 import Welcome from "../Components/Welcome";
 import Discount from "../Components/Discount";
+import Review from "../Components/Review";
 
 const Home = () => {
   const [cardData, setCardData] = useState([]);
@@ -65,6 +66,10 @@ const Home = () => {
         </div>
         <Welcome></Welcome>
         <Discount></Discount>
+        <Fade direction="down">
+        <h1 className="md:text-6xl text-4xl font-Bebas">our happy clients</h1>
+        <Review></Review>
+        </Fade>
       </div>
     </>
   );

@@ -42,7 +42,7 @@ Welcome to **swift**, your one-stop online store for premium sports equipment an
 ### **Home Page**:  
 - A banner slider with sports-themed content.  
 - Product showcase with details and categories section.  
-- Additional sections for shiping and our brands.  
+- Additional sections for shiping and our brands and review sections.  
 
 ### **Add Equipment** *(Private)*:  
 - A detailed form to add products with fields like image, description, customization options, etc.  
