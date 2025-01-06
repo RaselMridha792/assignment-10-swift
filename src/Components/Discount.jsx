@@ -10,6 +10,7 @@ import brands9 from "../assets/brands9.jpg";
 import brands10 from "../assets/brands10.jpg";
 import brands11 from "../assets/brands11.jpg";
 import { Fade } from "react-awesome-reveal";
+import Marquee from "react-fast-marquee";
 
 const Discount = () => {
   return (
@@ -24,38 +25,43 @@ const Discount = () => {
           </Fade>
         </div>
         <Fade direction="down">
-        <div className="my-20 grid lg:grid-cols-5 gap-5 md:grid-cols-3 grid-cols-1 ">
-          <div>
+        {/* <div className="my-20 grid lg:grid-cols-5 gap-5 md:grid-cols-3 grid-cols-1 "> */}
+        <Marquee
+        pauseOnHover={true}
+        speed={200}
+        >
+          <div className="w-3/4">
             <img src={brands1} alt="" />
           </div>
-          <div>
+          <div className=" w-3/4">
             <img src={brands2} alt="" />
           </div>
-          <div>
+          <div className=" w-3/4">
             <img src={brands5} alt="" />
           </div>
-          <div>
+          <div className=" w-3/4">
             <img src={brands7} alt="" />
           </div>
-          <div>
+          <div className=" w-3/4">
             <img src={brands3} alt="" />
           </div>
-          <div>
+          <div className=" w-3/4">
             <img src={brands4} alt="" />
           </div>
-          <div>
+          <div className=" w-3/4">
             <img src={brands8} alt="" />
           </div>
-          <div>
+          <div className=" w-3/4">
             <img src={brands9} alt="" />
           </div>
-          <div>
+          <div className=" w-3/4">
             <img src={brands10} alt="" />
           </div>
-          <div>
+          <div className=" w-3/4">
             <img src={brands11} alt="" />
           </div>
-        </div>
+          </Marquee>
+        {/* </div> */}
         </Fade>
       </div>
     </>

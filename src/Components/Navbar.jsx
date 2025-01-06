@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { useContext } from "react";
 import { UserContext } from "../context/AuthContext";
@@ -6,11 +6,11 @@ import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { signOut } from "firebase/auth";
 import auth from "../firebase/firebase.init";
 import { Tooltip } from "react-tooltip";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = () => {
   const { user } = useContext(UserContext);
+  const location = useLocation()
   const links = (
     <>
       <div className="flex flex-col lg:flex-row gap-5">
@@ -20,11 +20,14 @@ const Navbar = () => {
         <li>
           <NavLink to="/all-equipment">All Sports Equipment</NavLink>
         </li>
-        <li>
+        {user &&         <><li>
           <NavLink to="/add-equipment">Add Equipment</NavLink>
         </li>
         <li>
           <NavLink to={`/myEquipments/${user?.email}`}>My Equipment</NavLink>
+        </li></>}
+        <li>
+          <NavLink to="/contacts">contact Us</NavLink>
         </li>
       </div>
     </>
@@ -33,7 +36,7 @@ const Navbar = () => {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        console.log('logout successfull')
+        console.log("logout successfull");
       })
       .catch((error) => {
         console.log(error.message);
@@ -41,22 +44,8 @@ const Navbar = () => {
   };
   return (
     <div>
-      <div className="md:flex justify-between items-center py-5 w-10/12 mx-auto">
-      <ToastContainer></ToastContainer>
-        <div className="hidden md:flex">
-          <p>Push Your Limits, Play with Passion!</p>
-        </div>
-        <div className="flex space-x-2">
-          <h1>Change Theme </h1>
-          <input
-            type="checkbox"
-            value="dark"
-            className="toggle theme-controller"
-          />
-        </div>
-      </div>
-      <div className="bg-gray-800">
-        <div className="navbar w-10/12 mx-auto text-white">
+      <div className="w-full fixed z-10 bg-white border-b-2 top-0">
+        <div className="navbar w-10/12 mx-auto px-5">
           <div className="navbar-start">
             <div className="dropdown">
               <div
@@ -81,19 +70,21 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-gray-800 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-white rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
                 {links}
               </ul>
             </div>
             <div>
-              <Link to='/'><img className="w-40" src={logo} alt="" /></Link>
+              <Link to="/">
+                <img className="w-40" src={logo} alt="" />
+              </Link>
             </div>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{links}</ul>
           </div>
-          <div className="navbar-end">
+          <div className="navbar-end gap-5">
             {user ? (
               <>
                 <div className="avatar mr-2">

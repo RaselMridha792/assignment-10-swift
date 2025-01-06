@@ -6,12 +6,12 @@ import Footer from "./Components/Footer";
 function App() {
   return (
     <>
-      <section>
+      <section className="bg-slate-100">
         <Navbar></Navbar>
         <Outlet></Outlet>
-        <section className="bg-gray-800 *:text-white">
+        <div className="bg-gray-800 *:text-white">
         <Footer></Footer>
-      </section>
+      </div>
       </section>
     </>
   );

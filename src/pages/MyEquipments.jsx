@@ -8,9 +8,9 @@ const MyEquipments = () => {
   const [data, setData] = useState(loadedData);
   return (
     <>
-        <Helmet>
-      <title>My equipments | Swift</title>
-    </Helmet>
+      <Helmet>
+        <title>My equipments | Swift</title>
+      </Helmet>
       <div className="w-10/12 mx-auto my-20">
         <h1 className="text-6xl font-Bebas text-center mb-5">
           {" "}

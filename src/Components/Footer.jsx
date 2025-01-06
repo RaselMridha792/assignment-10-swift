@@ -23,8 +23,7 @@ const Footer = () => {
         </nav>
         <nav>
           <h6 className="footer-title">Social</h6>
-          <NavLink to='/contact'>Contact Us</NavLink>
-          <NavLink to='/about'>About us</NavLink>
+          <NavLink to='/contacts'>Contact Us</NavLink>
           <div className="grid grid-flow-col gap-4">
             <a href="https://x.com/Raselmridh93328" about="blank">
               <svg
