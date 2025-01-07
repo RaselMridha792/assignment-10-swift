@@ -84,9 +84,6 @@ const Details = () => {
                 src={itemImage}
                 alt={`${itemName} image`}
               />
-              <button className="btn mt-5 w-full bg-red-500 hover:bg-red-600 text-white">
-                Add to Wishlist
-              </button>
             </div>
 
             {/* Product Info */}
@@ -189,50 +186,6 @@ const Details = () => {
                 </tr>
               </tbody>
             </table>
-          </div>
-
-          {/* Share on Social Section */}
-          <div className="mt-10">
-            <h2 className="text-2xl font-semibold text-gray-800">
-              Share on Social
-            </h2>
-            <p className="text-gray-600 mb-5">
-              Share this product with your friends and followers.
-            </p>
-            <div className="flex flex-wrap gap-5">
-              <a
-                href="#"
-                className="btn bg-blue-600 hover:bg-blue-700 text-white px-5"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Facebook
-              </a>
-              <a
-                href="#"
-                className="btn bg-sky-500 hover:bg-sky-600 text-white px-5"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Twitter
-              </a>
-              <a
-                href="#"
-                className="btn bg-pink-600 hover:bg-pink-700 text-white px-5"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>
-              <a
-                href="#"
-                className="btn bg-green-600 hover:bg-green-700 text-white px-5"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                WhatsApp
-              </a>
-            </div>
           </div>
         </div>
       </div>

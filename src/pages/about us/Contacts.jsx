@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Contacts = () => {
+  const handleContact = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Successful",
+      text: "Message Sending Successful",
+      icon: "Success",
+    });
+  };
   return (
     <>
       <section className="bg-white">
@@ -25,7 +34,7 @@ const Contacts = () => {
                 for sports and active lifestyle
               </p>
               <div className="mb-10">
-                <form>
+                <form onSubmit={handleContact}>
                   <label className="form-control w-full ">
                     <div className="label">
                       <span className="label-text">Name</span>
@@ -34,6 +43,7 @@ const Contacts = () => {
                       type="text"
                       placeholder="your name"
                       className="input input-bordered w-full"
+                      required
                     />
                   </label>
                   <label className="form-control w-full ">
@@ -41,9 +51,10 @@ const Contacts = () => {
                       <span className="label-text">Email</span>
                     </div>
                     <input
-                      type="text"
+                      type="email"
                       placeholder="Your Email"
                       className="input input-bordered w-full"
+                      required
                     />
                   </label>
                   <label className="form-control w-full ">
@@ -57,7 +68,9 @@ const Contacts = () => {
                       placeholder="Your Message"
                     ></textarea>
                   </label>
-                  <button className="btn mt-5 bg-orange-500 text-white hover:bg-orange-600">
+                  <button
+                    className="btn mt-5 bg-orange-500 text-white hover:bg-orange-600"
+                  >
                     submit
                   </button>
                 </form>

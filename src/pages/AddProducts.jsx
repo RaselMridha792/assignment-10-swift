@@ -198,7 +198,7 @@ const AddProducts = () => {
                 required
               ></textarea>
             </label>
-            <button className="btn col-span-2 btn-success w-full my-5">
+            <button className="btn col-span-2 btn-warning w-full my-5">
               Add Product
             </button>
           </form>

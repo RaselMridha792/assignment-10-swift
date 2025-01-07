@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet";
+import logo from "../assets/signup/Mobile-login-amico.svg"
 
 const Login = () => {
   const { handleSignInUser, handleSignInGoogle, handleReset, setUser } =
@@ -61,11 +62,11 @@ const Login = () => {
       <Helmet>
         <title>Login | Swift</title>
       </Helmet>
-      <div className="hero bg-base-200 min-h-screen">
-        <ToastContainer></ToastContainer>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <form onSubmit={handleLogin} className="card-body font-Roboto">
-            <h1 className="text-center text-5xl font-Bebas">Login Now</h1>
+      <div className="flex flex-col-reverse lg:flex-row items-center justify-center p-4 my-16">
+        <ToastContainer />
+        <div className="w-full lg:w-1/4 md:w-2/4">
+          <form onSubmit={handleLogin} className=" font-Roboto">
+            <h1 className="text-center text-5xl font-Bebas my-6">Login Now</h1>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -74,7 +75,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 ref={emailRef}
-                placeholder="email"
+                placeholder="Email"
                 className="input input-bordered"
                 required
               />
@@ -86,11 +87,14 @@ const Login = () => {
               <input
                 type={eye ? "password" : "text"}
                 name="password"
-                placeholder="password"
+                placeholder="Password"
                 className="input input-bordered"
                 required
               />
-              <div onClick={handleEye} className="absolute right-4 bottom-12">
+              <div
+                onClick={handleEye}
+                className="absolute right-4 bottom-4 cursor-pointer"
+              >
                 {eye ? <FaEye /> : <FaEyeSlash />}
               </div>
               <label className="label">
@@ -105,20 +109,27 @@ const Login = () => {
             <div className="form-control mt-6 space-y-4">
               <button className="btn btn-primary">Login</button>
               <button
+                type="button"
                 onClick={signInwithGoogle}
-                className="btn bg-gray-800 hover:bg-gray-500 text-white"
+                className="btn bg-gray-800 hover:bg-gray-500 text-white flex items-center justify-center gap-2"
               >
-                {" "}
                 <FaGoogle /> Sign in With Google
               </button>
             </div>
-            <p className="text-center">
-              don't have any account?{" "}
+            <p className="text-center mt-4">
+              Don’t have an account?{" "}
               <Link className="text-red-500" to="/register">
                 Register
               </Link>
             </p>
           </form>
+        </div>
+        <div className="w-full lg:w-1/3">
+          <img
+            src={logo}
+            alt="Signup Illustration"
+            className="w-full max-w-md mx-auto"
+          />
         </div>
       </div>
     </>

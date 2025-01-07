@@ -20,7 +20,7 @@ const AllEquipment = () => {
       </Helmet>
       <section className="my-16">
         <div>
-          <h1 className="md:text-6xl font-3xl font-Bebas text-center pt-10">
+          <h1 className="lg:text-6xl text-4xl font-Bebas text-center pt-10">
             All Campaign
           </h1>
           <div className="w-10/12 text-xl font-Roboto mx-auto flex justify-between items-center">
