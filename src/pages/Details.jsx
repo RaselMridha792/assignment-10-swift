@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 import { UserContext } from "../context/AuthContext";
 import { CardContext } from "../context/CartProvider";
+import Swal from "sweetalert2";
 
 const Details = () => {
   const data = useLoaderData();
@@ -40,6 +41,11 @@ const Details = () => {
       .then(data =>{
         if(data.acknowledged == true){
           setAddItem(!addItem)
+          Swal.fire({
+            title: "Successful",
+            text: "Successfully added to the cart",
+            icon: "Success"
+          });
         }
       })
     }
