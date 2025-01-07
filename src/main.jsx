@@ -18,6 +18,7 @@ import ForgetPass from "./pages/ForgetPass.jsx";
 import PrivetRoutes from "./Components/privet routes/PrivetRoutes.jsx";
 import ShopNow from "./pages/ShopNow.jsx";
 import Contacts from "./pages/about us/Contacts.jsx";
+import CardProvider from "./context/CartProvider.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -115,7 +116,9 @@ const routes = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthContext>
-      <RouterProvider router={routes}></RouterProvider>
+      <CardProvider>
+        <RouterProvider router={routes}></RouterProvider>
+      </CardProvider>
     </AuthContext>
   </StrictMode>
 );

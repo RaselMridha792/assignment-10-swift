@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
+import { UserContext } from "../context/AuthContext";
+import { CardContext } from "../context/CartProvider";
 
 const Details = () => {
   const data = useLoaderData();
+  const {addItem, setAddItem} = useContext(CardContext)
+  const { user } = useContext(UserContext);
   const {
     itemName,
     category,
+    _id,
     price,
     rating,
     customization,
@@ -15,6 +20,30 @@ const Details = () => {
     stockStatus,
     description,
   } = data;
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const quantity = form.quantity.value;
+    const totalPrice = quantity*price
+    const users = user?.email
+    const product = {itemImage, itemName, price, id:_id, quantity, totalPrice, users}
+    if(user){
+      fetch('http://localhost:5000/shopNow/carts', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(product)
+      })
+      .then(res => res.json())
+      .then(data =>{
+        if(data.acknowledged == true){
+          setAddItem(!addItem)
+        }
+      })
+    }
+  };
 
   return (
     <>
@@ -28,7 +57,9 @@ const Details = () => {
             <h1 className="text-4xl font-bold text-orange-500">
               Product Details
             </h1>
-            <p className="text-gray-600 mt-2">Find everything about your product here</p>
+            <p className="text-gray-600 mt-2">
+              Find everything about your product here
+            </p>
           </div>
 
           {/* Breadcrumb and Title */}
@@ -82,20 +113,26 @@ const Details = () => {
 
               {/* Quantity and Add to Cart */}
               <div className="space-y-3">
-                <label className="block">
-                  <span className="text-sm font-medium">Quantity</span>
-                  <div className="flex gap-3 mt-2">
-                    <input
-                      type="number"
-                      min="1"
-                      defaultValue="1"
-                      className="input input-bordered w-20"
-                    />
-                    <button className="btn bg-orange-500 hover:bg-orange-600 text-white">
-                      Add to Cart
-                    </button>
-                  </div>
-                </label>
+                <form onSubmit={handleAddToCart} action="">
+                  <label className="block">
+                    <span className="text-sm font-medium">Quantity</span>
+                    <div className="flex gap-3 mt-2">
+                      <input
+                        type="number"
+                        name="quantity"
+                        required
+                        defaultValue="1"
+                        className="input input-bordered w-20"
+                      />
+                      <button
+                        type="submit"
+                        className="btn bg-orange-500 hover:bg-orange-600 text-white"
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </label>
+                </form>
               </div>
 
               {/* Stock and Delivery Info */}
@@ -110,7 +147,9 @@ const Details = () => {
 
               {/* Customization */}
               <div className="mt-5">
-                <h2 className="text-xl font-medium">Additional Customization</h2>
+                <h2 className="text-xl font-medium">
+                  Additional Customization
+                </h2>
                 <p className="text-gray-600 text-sm mt-2">{customization}</p>
               </div>
             </div>
@@ -121,7 +160,9 @@ const Details = () => {
             <h2 className="text-2xl font-semibold text-gray-800">
               Delivery Information
             </h2>
-            <p className="text-gray-600 mb-5">Learn about delivery options for this product.</p>
+            <p className="text-gray-600 mb-5">
+              Learn about delivery options for this product.
+            </p>
             <table className="table-auto w-full border text-left text-sm">
               <thead>
                 <tr className="bg-gray-200">

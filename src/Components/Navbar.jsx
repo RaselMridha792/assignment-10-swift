@@ -1,17 +1,18 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/AuthContext";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { signOut } from "firebase/auth";
 import auth from "../firebase/firebase.init";
 import { Tooltip } from "react-tooltip";
 import "react-toastify/dist/ReactToastify.css";
-import { HiOutlineShoppingCart } from "react-icons/hi";
+import { CardContext } from "../context/CartProvider";
 
 const Navbar = () => {
   const { user } = useContext(UserContext);
-  const location = useLocation();
+  const {cartItem} = useContext(CardContext);
+  const totalSum = cartItem.reduce((sum, item) => sum + item.totalPrice, 0);
   const links = (
     <>
       <div className="flex flex-col lg:flex-row gap-5">
@@ -113,7 +114,7 @@ const Navbar = () => {
                       d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                     />
                   </svg>
-                  <span className="badge badge-sm indicator-item">8</span>
+                  <span className="badge badge-sm indicator-item">{cartItem?.length}</span>
                 </div>
               </div>
               <div
@@ -121,13 +122,8 @@ const Navbar = () => {
                 className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
               >
                 <div className="card-body">
-                  <span className="text-lg font-bold">8 Items</span>
-                  <span className="text-info">Subtotal: $999</span>
-                  <div className="card-actions">
-                    <button className="btn btn-primary btn-block">
-                      View cart
-                    </button>
-                  </div>
+                  <span className="text-lg font-bold">{cartItem?.length} Items</span>
+                  <span className="text-info">Subtotal: ${totalSum}</span>
                 </div>
               </div>
             </div>
