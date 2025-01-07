@@ -18,7 +18,7 @@ const CategoryItem = () => {
     <>
       <div className="font-Roboto grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-5  font-bold text-xl py-5">
         {categoriesData.map((category) => (
-          <Link key={category} className="border p-5 rounded-lg hover:text-red-500" to={`/shopnow/${category}`}>{category}</Link>
+          <Link key={category} className="border bg-white py-3 px-3 rounded-lg hover:text-red-500" to={`/shopnow/${category}`}>{category}</Link>
         ))}
       </div>
     </>

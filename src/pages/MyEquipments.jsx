@@ -11,13 +11,14 @@ const MyEquipments = () => {
       <Helmet>
         <title>My equipments | Swift</title>
       </Helmet>
-      <div className="w-10/12 mx-auto my-20">
-        <h1 className="text-6xl font-Bebas text-center mb-5">
+      <div className="bg-white">
+      <div className="w-10/12 mx-auto my-32">
+        <h1 className="text-4xl font-Bebas text-center mb-5">
           {" "}
           my equipments{" "}
         </h1>
         <hr />
-        <div className="grid my-10 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+        <div className="grid my-10 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5">
           {data.length > 0 ? (
             data.map((singleData) => (
               <MyEquipCard
@@ -33,6 +34,7 @@ const MyEquipments = () => {
             </h1>
           )}
         </div>
+      </div>
       </div>
     </>
   );

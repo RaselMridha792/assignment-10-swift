@@ -8,7 +8,7 @@ const CardProvider = ({children}) => {
     const [addItem, setAddItem] = useState(false);
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/shopNow/carts/${user?.email}`)
+        fetch(`https://a-sports-equipment-store-server.vercel.app/shopNow/carts/${user?.email}`)
         .then(res => res.json())
         .then(data =>{
             setCartItem(data)

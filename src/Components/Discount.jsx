@@ -18,10 +18,11 @@ const Discount = () => {
       <div className="my-20 font-Roboto">
         <div className="py-5">
           <Fade direction="up">
-          <h1 className="md:text-6xl text-4xl font-Bebas">our top brands</h1>
-            <p className="text-xl text-gray-400">
+          <h1 className="md:text-4xl text-3xl font-Bebas">our top brands</h1>
+            <p className="text-sm text-gray-400">
               Elevating Your Style with the Best: Discover Our Top Brands Today!
             </p>
+            <hr className="border-2 lg:w-1/4 md:w-2/4 w-3/4 my-5 border-orange-500" />
           </Fade>
         </div>
         <Fade direction="down">

@@ -64,21 +64,8 @@ const MyEquipCard = ({ singleData, setData, data }) => {
             <p>
               <span className="font-bold">price:</span> ${price}
             </p>
-            <div>
-              <span className="font-bold">rating: </span>
-              {rating} stars
-            </div>
             <p>
-              <span className="font-bold">Customization : </span>
-              {customization}
-            </p>
-            <p>
-              <span className="font-bold">delivery time: </span>
-              {ProcessingTime}
-            </p>
-            <p>
-              <span className="font-bold">Available in Stock: </span>
-              {stockStatus}
+              {ProcessingTime} Delivery
             </p>
           </div>
 

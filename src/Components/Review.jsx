@@ -1,11 +1,11 @@
 import React from "react";
-
+import Marquee from "react-fast-marquee";
 
 const Review = () => {
   return (
     <>
-      <div className="my-20 grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
-        <div className="border p-5">
+      <Marquee pauseOnHover={true} speed={200}>
+        <div className="border p-5 w-96 mx-5 mt-auto h-96 bg-white">
           <p className="text-gray-500 text-lg py-5">
             "I recently purchased a set of Swift RunPro running shoes from Swift
             and I couldn’t be happier! The fit is perfect and they provide great
@@ -19,7 +19,7 @@ const Review = () => {
             <h1>John D., ProAthleteJohn</h1>
           </div>
         </div>
-        <div className="border p-5">
+        <div className="border p-5 w-96 mx-5 mt-auto h-96 bg-white">
           <p className="text-gray-500 text-lg py-5">
             "Swift’s customer service is outstanding! I had an issue with my
             order and they resolved it promptly and professionally. The products
@@ -40,7 +40,7 @@ https://i.ibb.co.com/PznYkWJ/waist-up-portrait-handsome-serious-unshaven-male-ke
             <h1>Sarah L., ActiveSarah</h1>
           </div>
         </div>
-        <div className="border p-5">
+        <div className="border p-5 w-96 mx-5 mt-auto h-96 bg-white">
           <p className="text-gray-500 text-lg py-5">
             "I bought a Swift Elite tennis racket, and its simply amazing! The
             balance and power it offers are unmatched. Swifts products are
@@ -53,7 +53,7 @@ https://i.ibb.co.com/PznYkWJ/waist-up-portrait-handsome-serious-unshaven-male-ke
             <h1>- Mike R., TennisLoverMike</h1>
           </div>
         </div>
-        <div className="border p-5">
+        <div className="border p-5 w-96 mx-5 mt-auto h-96 bg-white">
           <p className="text-gray-500 text-lg py-5">
             "Swift’s delivery was fast and efficient, and the product I ordered
             was exactly as described. I’m loving my new Swift FitnessPro
@@ -66,7 +66,7 @@ https://i.ibb.co.com/PznYkWJ/waist-up-portrait-handsome-serious-unshaven-male-ke
             <h1> - Emily W., FitEmily</h1>
           </div>
         </div>
-        <div className="border p-5">
+        <div className="border p-5 w-96 mx-5 mt-auto h-96 bg-white">
           <p className="text-gray-500 text-lg py-5">
             "I’m really impressed with Swift’s wide range of sports equipment. I
             found exactly what I needed for my cycling sessions, and the quality
@@ -79,7 +79,7 @@ https://i.ibb.co.com/PznYkWJ/waist-up-portrait-handsome-serious-unshaven-male-ke
             <h1>- David T., CyclistDavid</h1>
           </div>
         </div>
-        <div className="border p-5">
+        <div className="border p-5 w-96 mx-5 mt-auto h-96 bg-white">
           <p className="text-gray-500 text-lg py-5">
             "Swift’s prices are very competitive, and the quality of their
             products is exceptional. I bought a pair of Swift Runner shorts and
@@ -91,8 +91,8 @@ https://i.ibb.co.com/PznYkWJ/waist-up-portrait-handsome-serious-unshaven-male-ke
             </div>
             <h1>- Rachel P., RunnerRachel</h1>
           </div>
-        </div>  
-        <div className="border p-5">
+        </div>
+        <div className="border p-5 w-96 mx-5 mt-auto h-96 bg-white">
           <p className="text-gray-500 text-lg py-5">
             "Swift’s sports equipment is well-designed and durable. I bought a
             set of Swift GolfMaster clubs, and they’re fantastic. The customer
@@ -106,7 +106,7 @@ https://i.ibb.co.com/PznYkWJ/waist-up-portrait-handsome-serious-unshaven-male-ke
             <h1>- Brian K., GolferBrian</h1>
           </div>
         </div>
-        <div className="border p-5">
+        <div className="border p-5 w-96 mx-5 mt-auto h-96 bg-white">
           <p className="text-gray-500 text-lg py-5">
             "Swift exceeded my expectations! The Swift RunPro running shoes I
             bought are so comfortable, and the materials used are of high
@@ -120,7 +120,7 @@ https://i.ibb.co.com/PznYkWJ/waist-up-portrait-handsome-serious-unshaven-male-ke
             <h1>- Jessy F., ActiveJessica</h1>
           </div>
         </div>
-      </div>
+      </Marquee>
     </>
   );
 };

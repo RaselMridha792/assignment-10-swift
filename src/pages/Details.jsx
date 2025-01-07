@@ -29,7 +29,7 @@ const Details = () => {
     const users = user?.email
     const product = {itemImage, itemName, price, id:_id, quantity, totalPrice, users}
     if(user){
-      fetch('http://localhost:5000/shopNow/carts', {
+      fetch('https://a-sports-equipment-store-server.vercel.app/shopNow/carts', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
