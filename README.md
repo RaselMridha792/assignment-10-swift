@@ -5,7 +5,7 @@ Welcome to **swift**, your one-stop online store for premium sports equipment an
 ## Live client Site URL 
 [EquiSports Live](https://sports-auth-a50fc.web.app/)
 
-##Live server Site URL: 
+##Live server Site URL
 [EquiSports Live](https://a-sports-equipment-store-server.vercel.app/)
 
 
@@ -109,7 +109,7 @@ Welcome to **swift**, your one-stop online store for premium sports equipment an
 1.git clone 
 
 - git clone https://github.com/RaselMridha792/assignment-10-swift
-- 
+  
 2. npm install to install dependency
 3. create a .env.local and paste your firebase api keys
 
@@ -127,9 +127,3 @@ Welcome to **swift**, your one-stop online store for premium sports equipment an
 
 ---
 
-## 📂 GitHub Repositories  
-
-- **Client-Side Code**: [EquiSports Client](https://github.com/programming-hero-web-course2/b10-a10-client-side-RaselMridha792) 
-- **Server-Side Code**: [EquiSports Server](https://github.com/programming-hero-web-course2/b10-a10-server-side-RaselMridha792) 
-
----
