@@ -1,14 +1,15 @@
 # swift: Sports Equipment Online Store  
-# assignment category -- Lotus, EquiSports: (A Sports Equipment Store)
 
 Welcome to **swift**, your one-stop online store for premium sports equipment and accessories. This e-commerce platform allows customers to browse, purchase, and manage their sports accessories needs effortlessly.  
 
-**Live client Site URL**: [EquiSports Live](https://sports-auth-a50fc.web.app/)
-**Live server Site URL**: [EquiSports Live](https://a-sports-equipment-store-server.vercel.app/)
-**requirements docs**: [https://docs.google.com/document/d/1zl97jEDUtdadOGwHSV_fP1gShCwCxwk6DDhQbEpcfHY/edit?tab=t.0]
----
+## Live client Site URL 
+[EquiSports Live](https://sports-auth-a50fc.web.app/)
 
-## 🚀 Features  
+##Live server Site URL: 
+[EquiSports Live](https://a-sports-equipment-store-server.vercel.app/)
+
+
+## 🚀Key Features  
 
 - **User-Friendly Interface**:  
   - Responsive design tailored for mobile, tablet, and desktop users.  
@@ -66,6 +67,51 @@ Welcome to **swift**, your one-stop online store for premium sports equipment an
 - A creative page to handle non-existent routes.  
 
 ---
+
+##  dependencies
+
+    "@emotion/react": "^11.13.5",
+    "firebase": "^11.0.2",
+    "localforage": "^1.10.0",
+    "match-sorter": "^8.0.0",
+    "react": "^18.3.1",
+    "react-awesome-reveal": "^4.2.14",
+    "react-dom": "^18.3.1",
+    "react-fast-marquee": "^1.6.5",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^5.4.0",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^7.0.2",
+    "react-toastify": "^10.0.6",
+    "react-tooltip": "^5.28.0",
+    "sort-by": "^1.2.0",
+    "sweetalert2": "^11.14.5",
+    "swiper": "^11.2.0"
+
+## devDependencies"
+    "@eslint/js": "^9.15.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "daisyui": "^4.12.23",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.12.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "vite": "^6.0.1"
+
+
+## Installing
+1.git clone 
+
+- git clone https://github.com/RaselMridha792/assignment-10-swift
+- 
+2. npm install to install dependency
+3. create a .env.local and paste your firebase api keys
 
 ## 🌐 Deployment  
 
